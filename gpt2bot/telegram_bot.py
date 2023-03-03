@@ -128,7 +128,8 @@ def message(self, update, context):
             prompt += clean_text(user_message) + self.generation_pipeline.tokenizer.eos_token
         for bot_message in turn['bot_messages']:
             prompt += clean_text(bot_message) + self.generation_pipeline.tokenizer.eos_token
-
+    
+    print('I got the message')
     # Generate bot messages
     bot_messages = generate_responses(
         prompt,
@@ -156,7 +157,8 @@ def message(self, update, context):
         # Also return the response as a GIF
         gif_url = translate_message_to_gif(bot_message, **self.chatbot_params)
         context.bot.send_animation(update.effective_message.chat_id, gif_url)
-
+    print('I'm trying to generate a message')
+  
 
 def error(update, context):
     logger.warning(context.error)
